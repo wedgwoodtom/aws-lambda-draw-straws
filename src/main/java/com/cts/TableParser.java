@@ -4,6 +4,7 @@ import com.cts.data.*;
 import com.cts.data.Class;
 import com.cts.sheets.data.Column;
 import com.cts.sheets.data.Table;
+import org.apache.commons.lang3.StringUtils;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -18,7 +19,10 @@ public class TableParser
 
         try
         {
-            teacher.setId(table.getCols().get(1).getLabel());
+            String id = table.getCols().get(1).getLabel();
+            id = StringUtils.remove(id, " START");
+            teacher.setId(id);
+            teacher.setEmail(id);
 
             Class currentClass = null;
             DateFormat dateFormat = new SimpleDateFormat("hh:mm a");
@@ -63,14 +67,9 @@ public class TableParser
 
 /*
 
-
-
-
-   * https://docs.google.com/spreadsheets/d/15esEPiQ0jmjy5i0nduPXyfKYo1KsMzrhLy-O8mGynDg/edit#gid=2137398532
-
+https://docs.google.com/spreadsheets/d/15esEPiQ0jmjy5i0nduPXyfKYo1KsMzrhLy-O8mGynDg/edit#gid=2137398532
 
 http://spreadsheets.google.com/tq?tq=select A,B,C,D&key=15esEPiQ0jmjy5i0nduPXyfKYo1KsMzrhLy-O8mGynDg
-
 
 
 {

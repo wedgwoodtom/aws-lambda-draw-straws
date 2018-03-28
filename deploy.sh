@@ -20,9 +20,9 @@
 # Troubleshoot
 # Run deploy.sh from terminal and see what goes wrong
 
-LAMBDA_FUNCTION_NAME=submitScore
+LAMBDA_FUNCTION_NAME=refreshTeacherData
 DIST_DIR=target
-ZIP_FILE_NAME=cts-lambda-highscore-handler-1.0-SNAPSHOT.jar
+ZIP_FILE_NAME=cts-lambda-drawstraws-handler-1.0-SNAPSHOT.jar
 
 #mkdir -p ${DIST_DIR}
 #rm -f ${DIST_DIR}/${ZIP_FILE_NAME}
@@ -32,7 +32,7 @@ ZIP_FILE_NAME=cts-lambda-highscore-handler-1.0-SNAPSHOT.jar
 
 mvn clean package
 aws lambda update-function-code --function-name ${LAMBDA_FUNCTION_NAME} --zip-file fileb://${DIST_DIR}/${ZIP_FILE_NAME}
-aws lambda update-function-code --function-name highScores --zip-file fileb://${DIST_DIR}/${ZIP_FILE_NAME}
+aws lambda update-function-code --function-name findTeacherData --zip-file fileb://${DIST_DIR}/${ZIP_FILE_NAME}
 #aws lambda update-function-code --function-name ${LAMBDA_FUNCTION_NAME} --zip-file fileb://${DIST_DIR}/${ZIP_FILE_NAME} --s3-bucket aws-lambda-handler-repository --s3-key ${ZIP_FILE_NAME}
 echo Code successfully uploaded to AWS!
 

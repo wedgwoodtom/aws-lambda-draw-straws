@@ -2,9 +2,10 @@ package com.cts;
 
 import com.cts.data.Teacher;
 import com.cts.sheets.SimpleSheetsClient;
+import com.cts.client.TeacherService;
 import com.cts.sheets.data.Table;
 
-// This is the Lambda
+// This is the Lambda - com.cts.DrawSticksHandler::findTeacher
 public class DrawSticksHandler
 {
     private TeacherService service = new TeacherService();
@@ -12,7 +13,11 @@ public class DrawSticksHandler
 
     public Teacher findTeacher(String id)
     {
-        return service.findTeacher(id);
+        // TODO: Decide how to use the id, for now, just use email
+//        return service.findTeacher(id);
+
+        // TODO: For now, always update
+        return refreshTeacher(id);
     }
 
     public Teacher refreshTeacher(String id)
@@ -20,6 +25,7 @@ public class DrawSticksHandler
         // TODO: Retrieve the spreadsheet and update the classes and student lists
 
         // TODO: Get sheets id from teacher
+        System.out.println("refreshTeacher with id=" + id);
 
         Table teacherClassDataTable = sheetsClient.getSpreadsheet("15esEPiQ0jmjy5i0nduPXyfKYo1KsMzrhLy-O8mGynDg");
         Teacher teacher = TableParser.toTeacher(teacherClassDataTable);

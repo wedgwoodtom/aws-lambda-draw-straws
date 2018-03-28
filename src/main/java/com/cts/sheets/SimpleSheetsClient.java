@@ -10,7 +10,8 @@ public class SimpleSheetsClient
 
     public Table getSpreadsheet(String sheetId)
     {
-        try {
+        try
+        {
             String responseStr = org.apache.http.client.fluent.Request.Get(SPREADSHEET_URL + "&key=" + sheetId)
                     .execute()
                     .returnContent()

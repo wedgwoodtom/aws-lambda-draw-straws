@@ -2,6 +2,7 @@ package com.cts;
 
 import com.cts.data.Class;
 import com.cts.data.Teacher;
+import com.cts.client.TeacherService;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;

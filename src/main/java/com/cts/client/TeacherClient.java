@@ -1,4 +1,4 @@
-package com.cts;
+package com.cts.client;
 
 import com.amazonaws.regions.Region;
 import com.amazonaws.regions.Regions;
