@@ -25,7 +25,7 @@ public class TableParser
             teacher.setEmail(id);
 
             Class currentClass = null;
-            DateFormat dateFormat = new SimpleDateFormat("hh:mm a");
+            DateFormat dateFormat = new SimpleDateFormat("HH:MM");
 
             for (Column column : table.getRows()) {
                 String potentialTitle = getColumndData(column, 0);
