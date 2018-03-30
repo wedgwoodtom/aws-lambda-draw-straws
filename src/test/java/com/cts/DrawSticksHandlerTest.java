@@ -24,7 +24,7 @@ public class DrawSticksHandlerTest
         FindCurrentStudentsRequest request = new FindCurrentStudentsRequest();
         request.setCurrentTime(new Date());
         request.setTeacherId("ww.tom@gmail.com");
-        List<String> students = drawSticksHandler.findCurrentStudents(request);
+        List<String> students = drawSticksHandler.findCurrentStudents(request).getStudents();
         Assert.assertNotNull(students);
         Assert.assertTrue(students.size()>0);
     }
@@ -36,7 +36,7 @@ public class DrawSticksHandlerTest
         FindCurrentStudentsRequest request = new FindCurrentStudentsRequest();
         request.setCurrentTime(new Date());
         request.setTeacherId("BAD_ID");
-        List<String> students = drawSticksHandler.findCurrentStudents(request);
+        List<String> students = drawSticksHandler.findCurrentStudents(request).getStudents();
         Assert.assertTrue(students.isEmpty());
     }
 }

@@ -39,13 +39,13 @@ public class DrawSticksHandler
         return service.findTeacher(id);
     }
 
-    public List<String> findCurrentStudents(FindCurrentStudentsRequest request)
+    public FindStudentsResponse findCurrentStudents(FindCurrentStudentsRequest request)
     {
         System.out.println("findCurrentStudents with id:"+request.getTeacherId()+", time:"+request.getCurrentTime());
         Teacher teacher = refreshTeacher(request.getTeacherId());
         if (teacher == null)
         {
-            return Collections.EMPTY_LIST;
+            return new FindStudentsResponse(Collections.EMPTY_LIST);
         }
 
         for (Class scheduled : teacher.getClassList())
@@ -57,11 +57,11 @@ public class DrawSticksHandler
             System.out.println("Comparing now:"+now.getTimeInMillis()+ ", start:"+start.getTimeInMillis() +", end:"+end.getTimeInMillis());
             if (start.getTimeInMillis() <= now.getTimeInMillis() && now.getTimeInMillis() <= end.getTimeInMillis())
             {
-                return scheduled.getStudents();
+                return new FindStudentsResponse(scheduled.getStudents());
             }
         }
 
-        return Collections.EMPTY_LIST;
+        return new FindStudentsResponse(Collections.EMPTY_LIST);
     }
 
     private Calendar adjustedDateToCalendar(Date date)
